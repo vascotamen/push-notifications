@@ -112,7 +112,7 @@ const WALLPAPER_DATAURIS={'nature.svg':'wallpapers/nature.svg'};
 const PT_MONTHS=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
 const PT_DAYS=['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
 function ptDate(iso){if(!iso)return'';const d=new Date(iso);return PT_DAYS[d.getDay()]+', '+d.getDate()+' de '+PT_MONTHS[d.getMonth()];}
-function fmtPct(v){if(v===null||v===undefined||v==='')return'';const n=typeof v==='number'?v:parseFloat(v);if(isNaN(n))return String(v);return(n*100).toFixed(n*100%1===0?0:1).replace(/\.0$/,'')+'%';}
+function fmtPct(v){if(v===null||v===undefined||v==='')return'';if(typeof v==='string'&&v.trimEnd().endsWith('%'))return v;const n=typeof v==='number'?v:parseFloat(v);if(isNaN(n))return String(v);return(n*100).toFixed(n*100%1===0?0:1).replace(/\.0$/,'')+'%';}
 function uniq(arr){return[...new Set(arr)];}
 function escHtml(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function esc2(s){return escHtml(s).replace(/"/g,'&quot;');}
